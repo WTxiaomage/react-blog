@@ -2,16 +2,16 @@
  * @Author: wangtao
  * @Date: 2021-11-14 11:25:16
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-11-15 15:49:03
+ * @LastEditTime: 2021-11-15 16:00:53
  * @Description: file content
  */
+import React, { useState } from 'react'
 import Head from 'next/head'
 import { Row, Col, List ,Breadcrumb} from 'antd'
 import Header from '../components/Header'
 import Author from '../components/Author'
 import Advert from '../components/Advert'
-import Foot from '../components/Foot'
-import React, { useState } from 'react'
+import Footer from '../components/Footer'
 import {
   CalendarOutlined,
   FolderViewOutlined,
@@ -86,7 +86,7 @@ export default function Home() {
           {/* <Advert /> */}
         </Col>
       </Row>
-      <Foot />
+      <Footer />
     </>
   )
 }
