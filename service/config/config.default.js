@@ -2,7 +2,7 @@
  * @Author: wangtao
  * @Date: 2021-11-15 16:17:10
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-11-15 22:13:36
+ * @LastEditTime: 2021-11-17 10:48:41
  * @Description: file content
  */
 /* eslint valid-jsdoc: "off" */
@@ -44,6 +44,18 @@ module.exports = appInfo => {
     // load into agent, default is close
     agent: false,
   };
+
+  config.security = {
+    csrf: {
+      enable: false,
+    },
+    domainWhiteList: [ '*' ],
+  };
+  config.cors = {
+    origin: '*',
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
+  };
+
 
   // add your user config here
   const userConfig = {

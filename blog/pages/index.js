@@ -2,7 +2,7 @@
  * @Author: wangtao
  * @Date: 2021-11-14 11:25:16
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-11-16 14:54:54
+ * @LastEditTime: 2021-11-17 10:41:15
  * @Description: file content
  */
 import React, { useState } from 'react'
@@ -18,6 +18,7 @@ import {
   FireOutlined,
 } from '@ant-design/icons'
 import axios from 'axios'
+import Link from 'next/link'
 
 export default function Home(list) {
   const [mylist, setMylist] = useState(list.data)
@@ -42,19 +43,19 @@ export default function Home(list) {
               dataSource={mylist}
               renderItem={(item) => (
                 <List.Item>
-                  <div className="list-title">{item.title}</div>
+                  <div className="list-title"><Link href={{pathname:'/detailed',query:{id:item.id}}}><a>{item.title}</a></Link></div>
                   <div className="list-icon">
                     <span>
                       <CalendarOutlined /> {item.addTime}
                     </span>
                     <span>
-                      <FolderViewOutlined /> {item.introduce}
+                      <FolderViewOutlined /> {item.typeName}
                     </span>
                     <span>
                       <FireOutlined /> {item.view_count}人
                     </span>
                   </div>
-                  <div className="list-context">{item.article_content}</div>
+                  <div className="list-context">{item.introduce}</div>
                 </List.Item>
               )}
             />
