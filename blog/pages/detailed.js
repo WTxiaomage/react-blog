@@ -2,10 +2,9 @@
  * @Author: wangtao
  * @Date: 2021-11-14 11:25:16
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-11-17 11:35:10
+ * @LastEditTime: 2021-11-18 10:25:36
  * @Description: file content
  */
-
 
 import React, { useState } from 'react'
 import Head from 'next/head'
@@ -22,6 +21,9 @@ import axios from 'axios'
 import { marked } from 'marked'
 import hljs from 'highlight.js'
 import Tocify from '../components/tocify.tsx'
+//先进行引入
+import servicePath from '../config/apiUrl'
+
 export default function Detailed(props) {
   const renderer = new marked.Renderer()
   const tocify = new Tocify()
@@ -29,6 +31,7 @@ export default function Detailed(props) {
     const anchor = tocify.add(text, level)
     return `<a id="${anchor}" href="#${anchor}" class="anchor-fix"><h${level}>${text}</h${level}></a>\n`
   }
+
   marked.setOptions({
     renderer: renderer,
     gfm: true,
@@ -80,9 +83,10 @@ export default function Detailed(props) {
                 </span>
               </div>
 
-              <div className="detailed-content"  
-                  dangerouslySetInnerHTML = {{__html:html}}   >
-                </div>
+              <div
+                className="detailed-content"
+                dangerouslySetInnerHTML={{ __html: html }}
+              ></div>
             </div>
           </div>
         </Col>
@@ -93,7 +97,6 @@ export default function Detailed(props) {
             <div className="detailed-nav comm-box">
               <div className="nav-title">文章目录</div>
               <div className="toc-list">{tocify && tocify.render()}</div>
-           
             </div>
           </Affix>
         </Col>
@@ -107,7 +110,7 @@ Detailed.getInitialProps = async (context) => {
   console.log(context)
   let id = context.query.id
   const promise = new Promise((resolve) => {
-    axios('http://127.0.0.1:7001/default/getArticleById/' + id).then((res) => {
+    axios(servicePath.getArticleById + id).then((res) => {
       resolve(res.data.data[0])
     })
   })
