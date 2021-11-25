@@ -2,7 +2,7 @@
  * @Author: wangtao
  * @Date: 2021-11-15 16:17:10
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-11-25 21:44:10
+ * @LastEditTime: 2021-11-25 22:52:47
  * @Description: file content
  */
 /* eslint valid-jsdoc: "off" */
@@ -53,7 +53,7 @@ module.exports = appInfo => {
   };
 
   config.cors = {
-    origin: 'http://localhost:3000',
+    origin: 'http://127.0.0.1:3000',
     credentials: true, // 允许Cook可以跨域
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
   };

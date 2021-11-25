@@ -2,7 +2,7 @@
  * @Author: wangtao
  * @Date: 2021-11-25 14:27:54
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-11-25 21:29:18
+ * @LastEditTime: 2021-11-25 22:33:57
  * @Description: file content
  */
 import React, { useState } from 'react'
@@ -39,6 +39,7 @@ function Login(props) {
       withCredentials: true,
     }).then((res) => {
       setIsLoading(false)
+      console.log('🚀🚀🚀wimi======>>>res',res)
       if (res.data.data === '登录成功') {
         localStorage.setItem('openId', res.data.openId)
         props.history.push('/index')

@@ -2,7 +2,7 @@
  * @Author: wangtao
  * @Date: 2021-11-15 16:37:47
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-11-25 22:10:04
+ * @LastEditTime: 2021-11-25 22:30:56
  * @Description: file content
  */
 'use strict';
@@ -29,6 +29,12 @@ class MainController extends Controller {
     } else {
       this.ctx.body = { data: '登录失败' };
     }
+  }
+
+  // 后台文章分类信息
+  async getTypeInfo() {
+    const resType = await this.app.mysql.select('type');
+    this.ctx.body = { data: resType };
   }
 
 }
