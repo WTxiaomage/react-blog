@@ -2,11 +2,11 @@
  * @Author: wangtao
  * @Date: 2021-11-25 14:22:37
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-11-25 14:24:16
+ * @LastEditTime: 2021-11-25 14:39:22
  * @Description: file content
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App'
+import Main from './pages/Main'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Main />, document.getElementById('root'));
