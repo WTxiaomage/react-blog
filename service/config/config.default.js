@@ -2,7 +2,7 @@
  * @Author: wangtao
  * @Date: 2021-11-15 16:17:10
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-11-17 10:48:41
+ * @LastEditTime: 2021-11-25 21:44:10
  * @Description: file content
  */
 /* eslint valid-jsdoc: "off" */
@@ -51,11 +51,12 @@ module.exports = appInfo => {
     },
     domainWhiteList: [ '*' ],
   };
+
   config.cors = {
-    origin: '*',
+    origin: 'http://localhost:3000',
+    credentials: true, // 允许Cook可以跨域
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
   };
-
 
   // add your user config here
   const userConfig = {

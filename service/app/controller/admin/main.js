@@ -2,7 +2,7 @@
  * @Author: wangtao
  * @Date: 2021-11-15 16:37:47
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-11-25 20:40:35
+ * @LastEditTime: 2021-11-25 22:10:04
  * @Description: file content
  */
 'use strict';
@@ -19,7 +19,7 @@ class MainController extends Controller {
   async checkLogin() {
     const userName = this.ctx.request.body.userName;
     const password = this.ctx.request.body.password;
-    const sql = `SELECT userName FROM admin_user WHERE userName = ${userName} AND password = ${password}`;
+    const sql = `SELECT userName FROM admin_user WHERE userName='${userName}' AND password='${password}'`;
     const res = await this.app.mysql.query(sql);
     if (res.length > 0) {
       // 登录成功，进行session缓存

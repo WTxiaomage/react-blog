@@ -2,23 +2,55 @@
  * @Author: wangtao
  * @Date: 2021-11-25 14:27:54
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-11-25 15:01:12
+ * @LastEditTime: 2021-11-25 21:29:18
  * @Description: file content
  */
 import React, { useState } from 'react'
 import 'antd/dist/antd.css'
-import { Card, Input, Icon, Button, Spin } from 'antd'
-import '../static/css/Login.css';
-function Login() {
+import { Card, Input, Icon, Button, Spin,message } from 'antd'
+import '../static/css/Login.css'
+import axios from 'axios'
+import servicePath from '../config/apiUrl.js'
+function Login(props) {
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const checkLogin = ()=>{
+
+
+  const checkLogin = () => {
     setIsLoading(true)
-    setTimeout(()=>{
-        setIsLoading(false)
-    },3000)
-}
+
+    if (!userName) {
+      message.error('用户名不能为空')
+      return false
+    } else if (!password) {
+      message.error('密码不能为空')
+      return false
+    }
+    let dataProps = {
+      userName: userName,
+      password: password,
+    }
+    
+    axios({
+      method: 'post',
+      url: servicePath.checkLogin,
+      data: dataProps,
+      withCredentials: true,
+    }).then((res) => {
+      setIsLoading(false)
+      if (res.data.data === '登录成功') {
+        localStorage.setItem('openId', res.data.openId)
+        props.history.push('/index')
+      } else {
+        message.error('用户名密码错误')
+      }
+    })
+
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 1000)
+  }
   return (
     <div className="login-div">
       <Spin tip="Loading..." spinning={isLoading}>
@@ -49,10 +81,7 @@ function Login() {
           />
           <br />
           <br />
-          <Button type="primary" size="large" block onClick={checkLogin}>
-            {' '}
-            Login in{' '}
-          </Button>
+          <Button type="primary" size="large" block onClick={checkLogin} > Login in </Button>
         </Card>
       </Spin>
     </div>
