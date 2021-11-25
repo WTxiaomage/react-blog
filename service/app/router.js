@@ -2,7 +2,7 @@
  * @Author: wangtao
  * @Date: 2021-11-15 16:17:10
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-11-16 14:15:00
+ * @LastEditTime: 2021-11-25 19:36:44
  * @Description: file content
  */
 'use strict';
@@ -13,5 +13,5 @@
 module.exports = app => {
 
   require('./router/default')(app);
-  // require('./router/addmin')(app);
+  require('./router/admin')(app);
 };

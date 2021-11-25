@@ -2,7 +2,7 @@
  * @Author: wangtao
  * @Date: 2021-11-15 16:37:47
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-11-18 09:44:02
+ * @LastEditTime: 2021-11-25 20:06:11
  * @Description: file content
  */
 'use strict';
@@ -36,6 +36,7 @@ class HomeController extends Controller {
   async getArticleById() {
     // 先配置路由的动态传值，然后再接收值
     const id = this.ctx.params.id;
+
 
     const sql = 'SELECT article.id as id,' +
     'article.title as title,' +
