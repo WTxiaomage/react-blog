@@ -2,7 +2,7 @@
  * @Author: wangtao
  * @Date: 2021-11-25 15:49:10
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-11-27 15:05:05
+ * @LastEditTime: 2021-11-27 16:36:42
  * @Description: file content
  */
 import React, { useState, useEffect } from 'react'
@@ -49,6 +49,12 @@ function AddArticle(props) {
   }
   useEffect(() => {
     getTypeInfo()
+    //获得文章ID
+    let tmpId = props.match.params.id
+    if (tmpId) {
+      setArticleId(tmpId)
+      getArticleById(tmpId)
+    }
   }, [])
 
   //从中台得到文章类别信息
@@ -130,6 +136,24 @@ function AddArticle(props) {
         }
       })
     }
+  }
+
+  const getArticleById = (id) => {
+    axios(servicePath.getArticleById + id, {
+      withCredentials: true,
+      header: { 'Access-Control-Allow-Origin': '*' },
+    }).then((res) => {
+      //let articleInfo= res.data.data[0]
+      setArticleTitle(res.data.data[0].title)
+      setArticleContent(res.data.data[0].article_content)
+      let html = marked(res.data.data[0].article_content)
+      setMarkdownContent(html)
+      setIntroducemd(res.data.data[0].introduce)
+      let tmpInt = marked(res.data.data[0].introduce)
+      setIntroducehtml(tmpInt)
+      setShowDate(res.data.data[0].addTime)
+      setSelectType(res.data.data[0].typeId)
+    })
   }
   return (
     <div>

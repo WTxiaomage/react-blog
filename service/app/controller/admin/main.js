@@ -2,7 +2,7 @@
  * @Author: wangtao
  * @Date: 2021-11-15 16:37:47
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-11-27 14:58:51
+ * @LastEditTime: 2021-11-27 16:34:39
  * @Description: file content
  */
 'use strict';
@@ -63,6 +63,46 @@ class MainController extends Controller {
     };
   }
 
+  // 获得文章列表
+  async getArticleList() {
+    const sql =
+      'SELECT article.id as id,' +
+      'article.title as title,' +
+      'article.introduce as introduce,' +
+      "FROM_UNIXTIME(article.addTime,'%Y-%m-%d' ) as addTime," +
+      'type.typeName as typeName ' +
+      'FROM article LEFT JOIN type ON article.type_id = type.Id ' +
+      'ORDER BY article.id DESC ';
+
+    const resList = await this.app.mysql.query(sql);
+    this.ctx.body = { list: resList };
+  }
+
+  // 删除文章
+  async delArticle() {
+    const id = this.ctx.params.id;
+    const res = await this.app.mysql.delete('article', { id });
+    this.ctx.body = { data: res };
+  }
+
+
+  // 根据文章ID得到文章详情，用于修改文章
+  async getArticleById() {
+    const id = this.ctx.params.id;
+
+    const sql = 'SELECT article.id as id,' +
+  'article.title as title,' +
+  'article.introduce as introduce,' +
+  'article.article_content as article_content,' +
+  "FROM_UNIXTIME(article.addTime,'%Y-%m-%d' ) as addTime," +
+  'article.view_count as view_count ,' +
+  'type.typeName as typeName ,' +
+  'type.id as typeId ' +
+  'FROM article LEFT JOIN type ON article.type_id = type.Id ' +
+  'WHERE article.id=' + id;
+    const result = await this.app.mysql.query(sql);
+    this.ctx.body = { data: result };
+  }
 }
 
 module.exports = MainController;
