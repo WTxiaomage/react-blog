@@ -2,7 +2,7 @@
  * @Author: wangtao
  * @Date: 2021-11-15 16:38:24
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-11-25 22:25:11
+ * @LastEditTime: 2021-11-27 14:59:15
  * @Description: file content
  */
 'use strict';
@@ -18,4 +18,6 @@ module.exports = app => {
   router.post('/admin/checkLogin', controller.admin.main.checkLogin);
 
   router.get('/admin/getTypeInfo', adminauth, controller.admin.main.getTypeInfo);
+  router.post('/admin/addArticle', adminauth, controller.admin.main.addArticle);
+  router.post('/admin/updateArticle', adminauth, controller.admin.main.updateArticle);
 };

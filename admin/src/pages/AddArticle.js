@@ -2,7 +2,7 @@
  * @Author: wangtao
  * @Date: 2021-11-25 15:49:10
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-11-25 22:46:34
+ * @LastEditTime: 2021-11-27 15:05:05
  * @Description: file content
  */
 import React, { useState, useEffect } from 'react'
@@ -89,7 +89,47 @@ function AddArticle(props) {
       message.error('发布日期不能为空')
       return false
     }
-    message.success('检验通过')
+
+    let dataProps = {} //传递到接口的参数
+    dataProps.type_id = selectedType
+    dataProps.title = articleTitle
+    dataProps.article_content = articleContent
+    dataProps.introduce = introducemd
+    let datetext = showDate.replace('-', '/') //把字符串转换成时间戳
+    dataProps.addTime = new Date(datetext).getTime() / 1000
+
+    if (articleId == 0) {
+      console.log('articleId=:' + articleId)
+      dataProps.view_count = Math.ceil(Math.random() * 100) + 1000
+      axios({
+        method: 'post',
+        url: servicePath.addArticle,
+        data: dataProps,
+        withCredentials: true,
+      }).then((res) => {
+        setArticleId(res.data.insertId)
+        if (res.data.isScuccess) {
+          message.success('文章保存成功')
+        } else {
+          message.error('文章保存失败')
+        }
+      })
+    } else {
+      dataProps.id = articleId
+      axios({
+        method: 'post',
+        url: servicePath.updateArticle,
+        header: { 'Access-Control-Allow-Origin': '*' },
+        data: dataProps,
+        withCredentials: true,
+      }).then((res) => {
+        if (res.data.isScuccess) {
+          message.success('文章保存成功')
+        } else {
+          message.error('保存失败')
+        }
+      })
+    }
   }
   return (
     <div>
