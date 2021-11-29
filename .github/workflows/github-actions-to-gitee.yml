@@ -1,24 +1,30 @@
-name: Sync Github Repos To Gitee
+name: sync2gitee
+# version: 1.0.2
+# author: [yiXu](https://github.com/yi-Xu-0100)
+# guide: [yi-Xu-0100/hub-mirror](https://github.com/yi-Xu-0100/hub-mirror)
+# template: [sync2gitee.yml](https://github.com/yi-Xu-0100/hub-mirror/blob/main/template/sync2gitee.yml)
+# lastmod: 2021-01-29 23:05:54
 
 on:
   push:
-    branches: 
-      - master
+  schedule:
+    # UTC 17:00 -> CST (China) 1:00 see https://datetime360.com/cn/utc-cst-china-time/
+    - cron: '1 17 * * *'
 
 jobs:
-  build:
+  run:
+    name: Sync GitHub to Gitee
     runs-on: ubuntu-latest
     steps:
 
-    - name: Sync Github Repos To Gitee  # 名字随便起
-      uses: Yikun/hub-mirror-action@v1.1  # 使用Yikun/hub-mirror-action
-      with:
-        src: github/WTxiaomage
-        dst: gitee/WTxiaomage_admin
-        white_list: react-blog
-        static_list: react-blog
-        dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
-        dst_token:  ${{ secrets.GITEE_TOKEN }}
-        account_type: user
-        force_update: true
-        timeout: 300
+      - name: Mirror the GitHub repos to Gitee
+        uses: Yikun/hub-mirror-action@v1.1
+        with:
+          src: github/WTxiaomage
+          dst: gitee/WTxiaomage_admin
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+          dst_token: ${{ secrets.GITEE_TOKEN }}
+          static_list: 'react-blog'
+          account_type: user
+          force_update: true
+          timeout: 300
