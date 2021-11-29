@@ -17,4 +17,4 @@ jobs:
         dst: gitee/git@gitee.com:WTxiaomage_admin/react-blog.git  # 目的端账户名(gitee)
         dst_key: ${{ secrets.GITEE_SSH_PRIVATE_KEY }}  # SSH密钥对中的私钥
         dst_token:  ${{ secrets.GITEE_TOKEN }}  # Gitee账户的私人令牌
-        account_type: org  # 账户类型
+#         account_type: org  # 账户类型
