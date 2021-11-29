@@ -17,7 +17,5 @@ jobs:
         dst: gitee/WTxiaomage_admin
         white_list: react-blog
         static_list: react-blog
-
-        dst_key: ${{ secrets.GITEE_SSH_PRIVATE_KEY }}  # SSH密钥对中的私钥
-        dst_token:  ${{ secrets.GITEE_TOKEN }}  # Gitee账户的私人令牌
-
+        dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+        dst_token:  ${{ secrets.GITEE_TOKEN }}
