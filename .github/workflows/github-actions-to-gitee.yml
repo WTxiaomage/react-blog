@@ -20,4 +20,4 @@ jobs:
 
         dst_key: ${{ secrets.GITEE_SSH_PRIVATE_KEY }}  # SSH密钥对中的私钥
         dst_token:  ${{ secrets.GITEE_TOKEN }}  # Gitee账户的私人令牌
-#         account_type: org  # 账户类型
+
