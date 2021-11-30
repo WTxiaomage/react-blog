@@ -2,7 +2,7 @@
  * @Author: wangtao
  * @Date: 2021-11-25 15:28:00
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-11-27 16:37:32
+ * @LastEditTime: 2021-12-01 07:53:36
  * @Description: file content
  */
 import React, { useState } from 'react'
@@ -73,10 +73,10 @@ function AdminIndex(props) {
           </Breadcrumb>
           <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
             <div>
-              <Route path="/index/add/" exact component={AddArticle} />
-              <Route path="/index/add/:id" exact component={AddArticle} />
-              <Route path="/index/list/"  component={ArticleList} />
-              <Route path="/index/" exact component={AddArticle} />
+            <Route path="/index/" exact  component={AddArticle} />
+            <Route path="/index/add/" exact   component={AddArticle} />
+            <Route path="/index/add/:id"  exact   component={AddArticle} />
+            <Route path="/index/list/"   component={ArticleList} />
             </div>
           </div>
         </Content>
