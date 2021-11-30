@@ -81,6 +81,7 @@ module.exports = function(proxy, allowedHost) {
       disableDotRule: true,
     },
     public: allowedHost,
+    // proxy,
     proxy,
     before(app, server) {
       if (fs.existsSync(paths.proxySetup)) {
