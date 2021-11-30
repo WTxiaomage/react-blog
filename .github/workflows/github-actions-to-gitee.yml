@@ -1,14 +1,8 @@
 name: sync2gitee
-# version: 1.0.2
-# author: [yiXu](https://github.com/yi-Xu-0100)
-# guide: [yi-Xu-0100/hub-mirror](https://github.com/yi-Xu-0100/hub-mirror)
-# template: [sync2gitee.yml](https://github.com/yi-Xu-0100/hub-mirror/blob/main/template/sync2gitee.yml)
-# lastmod: 2021-01-29 23:05:54
 
 on:
   push:
   schedule:
-    # UTC 17:00 -> CST (China) 1:00 see https://datetime360.com/cn/utc-cst-china-time/
     - cron: '1 17 * * *'
 
 jobs:
@@ -24,7 +18,8 @@ jobs:
           dst: gitee/WTxiaomage_admin
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token: ${{ secrets.GITEE_TOKEN }}
-          static_list: 'react-blog'
+          static_list: 'react-blog' # 要同步的仓库
+          white_list: 'react-blog' # 如果没有将自动创建
           account_type: user
           force_update: true
           timeout: 300
