@@ -2,11 +2,11 @@
  * @Author: wangtao
  * @Date: 2021-11-17 13:58:29
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-12-01 22:55:05
+ * @LastEditTime: 2021-12-02 20:29:58
  * @Description: file content
  */
-let ipUrl = 'http://127.0.0.1:7001/admin/' //开发
-// let ipUrl = 'http://49.235.127.70:7001/admin/' //生产
+// let ipUrl = 'http://127.0.0.1:7001/admin/' //开发
+let ipUrl = 'http://49.235.127.70:7001/admin/' //生产
 let servicePath = {
     getTypeInfo:ipUrl + 'getTypeInfo' ,  //  获得文章类别信息
     addArticle:ipUrl + 'addArticle' ,  //  添加文章

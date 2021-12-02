@@ -2,7 +2,7 @@
  * @Author: wangtao
  * @Date: 2021-11-15 16:17:10
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-12-01 07:50:30
+ * @LastEditTime: 2021-12-02 20:28:32
  * @Description: file content
  */
 /* eslint valid-jsdoc: "off" */
@@ -49,14 +49,14 @@ module.exports = appInfo => {
     csrf: {
       enable: false,
     },
-    // domainWhiteList: [ '*' ],
-    domainWhiteList: [ 'http://127.0.0.1:4000', 'http://127.0.0.1:3000', 'http://127.0.0.1:7001' ],
+    domainWhiteList: [ '*' ],
+    // domainWhiteList: [ 'http://127.0.0.1:4000', 'http://127.0.0.1:3000', 'http://127.0.0.1:7001', 'http://localhost:4000', 'http://localhost:3000', 'http://localhost:7001' ],
   };
 
   config.cors = {
-    // origin: 'http://127.0.0.1:3000',
-    origin: ctx => ctx.get('origin'),
+    // origin: '*',
     credentials: true, // 允许Cookie可以跨域
+    origin: ctx => ctx.get('origin'),
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
   };
 
