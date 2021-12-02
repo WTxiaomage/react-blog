@@ -2,7 +2,7 @@
  * @Author: wangtao
  * @Date: 2021-11-25 15:49:10
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-11-27 16:36:42
+ * @LastEditTime: 2021-12-02 22:13:05
  * @Description: file content
  */
 import React, { useState, useEffect } from 'react'
@@ -62,7 +62,8 @@ function AddArticle(props) {
     axios({
       method: 'get',
       url: servicePath.getTypeInfo,
-      header: { 'Access-Control-Allow-Origin': '*' },
+      // header: { 'Access-Control-Allow-Origin': '*' },
+      // 前端设置了withCredentials为true，就不能设置'Access-Control-Allow-Origin': '*'，否则会导致请求不会携带cookie
       withCredentials: true,
     }).then((res) => {
       if (res.data.data === '没有登录') {

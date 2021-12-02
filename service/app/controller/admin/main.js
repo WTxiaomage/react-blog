@@ -2,7 +2,7 @@
  * @Author: wangtao
  * @Date: 2021-11-15 16:37:47
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-11-27 16:34:39
+ * @LastEditTime: 2021-12-02 21:52:07
  * @Description: file content
  */
 'use strict';
@@ -25,6 +25,7 @@ class MainController extends Controller {
       // 登录成功，进行session缓存
       const openId = new Date().getTime();
       this.ctx.session.openId = { openId };
+      console.log('🚀🚀🚀wimi======>>>this.ctx.session.openId', this.ctx.session.openId);
       this.ctx.body = { data: '登录成功', openId };
     } else {
       this.ctx.body = { data: '登录失败' };
