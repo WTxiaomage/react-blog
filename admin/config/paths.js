@@ -1,3 +1,10 @@
+/*
+ * @Author: wangtao
+ * @Date: 2021-11-30 22:27:09
+ * @LastEditors: 汪滔
+ * @LastEditTime: 2021-12-03 10:00:21
+ * @Description: file content
+ */
 'use strict';
 
 const path = require('path');
@@ -69,7 +76,7 @@ const resolveModule = (resolveFn, filePath) => {
 module.exports = {
   dotenv: resolveApp('.env'),
   appPath: resolveApp('.'),
-  appBuild: resolveApp('build'),
+  appBuild: resolveApp('blog-admin'),
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.html'),
   appIndexJs: resolveModule(resolveApp, 'src/index'),
