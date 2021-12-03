@@ -10,7 +10,6 @@
 
 # production
 /build
-/blog-admin
 
 # misc
 .DS_Store
