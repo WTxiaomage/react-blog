@@ -2,7 +2,7 @@
  * @Author: wangtao
  * @Date: 2021-11-25 14:27:54
  * @LastEditors: 汪滔
- * @LastEditTime: 2021-12-02 21:47:13
+ * @LastEditTime: 2021-12-03 16:59:17
  * @Description: file content
  */
 import React, { useState } from 'react'
@@ -56,7 +56,7 @@ function Login(props) {
     <div className="login-div">
       <Spin tip="Loading..." spinning={isLoading}>
         <Card
-          title="JSPang Blog  System"
+          title="WT Blog  System"
           bordered={true}
           style={{ width: 400 }}
         >
